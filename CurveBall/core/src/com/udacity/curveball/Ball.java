@@ -1,19 +1,16 @@
 package com.udacity.curveball;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-
-import java.util.Locale;
 
 public class Ball {
 
     public static final String TAG = Ball.class.getSimpleName();
 
     public static final Color COLOR = Color.RED;
-    public static final float GRAVITY = 10;
+    private static final float GRAVITY = 10;
     public static final float DENSITY = .01f;
     public static final float DRAG = .05f;
 
@@ -24,7 +21,7 @@ public class Ball {
     public float rotation;
     public float angularPosition;
 
-    public Ball(float radius, float mass, Vector2 position, Vector2 velocity, float rotation) {
+    Ball(float radius, float mass, Vector2 position, Vector2 velocity, float rotation) {
         this.radius = radius;
         this.mass = mass;
         this.position = position;
@@ -33,17 +30,17 @@ public class Ball {
         angularPosition = 0;
     }
 
-    public void render(float deltaTime, ShapeRenderer renderer) {
+    void render(float deltaTime, ShapeRenderer renderer) {
 
         float magnusForce = DENSITY * velocity.len() * MathUtils.PI2 * radius * radius * rotation;
 
-        Gdx.app.log(TAG,
-                String.format(
-                        Locale.getDefault(),
-                        "Magnus: %.2f Old rotation: %.2f",
-                        magnusForce,
-                        rotation
-                ));
+//        Gdx.app.log(TAG,
+//                String.format(
+//                        Locale.getDefault(),
+//                        "Magnus: %.2f Old rotation: %.2f",
+//                        magnusForce,
+//                        rotation
+//                ));
 
         Vector2 acceleration = velocity.cpy();
         if (rotation >= 0) {

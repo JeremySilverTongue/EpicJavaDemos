@@ -15,12 +15,8 @@ public class CurveBallScreen extends ScreenAdapter {
 
 
     ScreenViewport viewport;
-
     ShapeRenderer renderer;
-
-
     Array<Ball> balls;
-
 
     @Override
     public void show() {
@@ -29,7 +25,6 @@ public class CurveBallScreen extends ScreenAdapter {
         renderer.setAutoShapeType(true);
 
         balls = new Array<>();
-
 
         Timer.schedule(
                 new Timer.Task() {
